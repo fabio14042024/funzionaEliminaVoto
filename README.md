@@ -1,0 +1,2 @@
+# funzionaEliminaVoto
+a
