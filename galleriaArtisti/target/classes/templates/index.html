@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Galleria degli artisti</title>
+    <!-- Collegamento al CSS tramite Thymeleaf e percorso statico -->
+    <link rel="stylesheet" th:href="@{/css/index.css}">
+    <link href="/static/css/index.css" rel="stylesheet">
+</head>
+<body>
+
+<!-- HEADER: Mostra il contenuto in base allo stato di autenticazione -->
+
+<header>
+    <!-- Se l'utente NON è autenticato (anonimo) -->
+    <div class="container" sec:authorize="isAnonymous()">
+        <h1>Benvenuto</h1>
+        <p>Esegui il login per usufruire di tutte le risorse!</p>
+        <a th:href="@{/login}" class="button login-button">Accedi</a>
+    </div>
+
+    <!-- Se l'utente È autenticato -->
+    <div class="container" sec:authorize="isAuthenticated()">
+        <h1>Benvenuto <span sec:authentication="name"></span></h1>
+        <a th:href="@{/profilo}" class="button login-button">Profilo</a>
+    </div>
+
+    <!-- Pulsante logout visibile se l'utente è autenticato -->
+    <a th:href="@{/logout}" class="button login-button">Log Out</a>
+</header>
+
+<!-- SEZIONE PRINCIPALE CON I PULSANTI -->
+
+<div class="container">
+    <div class="buttons">
+        <!-- Link alla classifica delle opere -->
+        <a th:href="@{/classifica}" class="button">Classifica Opere</a>
+
+        <!-- Se l'utente ha ruolo ARTISTA: può condividere opere -->
+        <div sec:authorize="hasAuthority('ARTISTA')">
+            <a th:href="@{/artista/nuovaOpera(username=${#authentication.principal.username})}" class="button">Condividi le tue Opere</a>
+        </div>
+
+        <!-- Se l'utente NON ha ruolo ARTISTA: reindirizzamento alla homepage -->
+        <div sec:authorize="!hasAuthority('ARTISTA')">
+            <a th:href="@{/}" class="button">Condividi le tue Opere</a>
+        </div>
+
+        <!-- Se l'utente è anonimo: link alla pagina base di votazione -->
+        <div sec:authorize="isAnonymous()">
+            <a th:href="@{/votazione}" class="button">Vota Opera</a>
+        </div>
+
+        <!-- Se l'utente è autenticato: link alla pagina di votazione con username -->
+        <div sec:authorize="isAuthenticated()">
+            <a th:href="@{/votazione(username=${#authentication.principal.username})}" class="button">Vota Opera</a>
+        </div>
+    </div>
+</div>
+
+<!-- MESSAGGIO DI AVVISO PER UTENTI NON AUTORIZZATI A CONDIVIDERE OPERE -->
+
+<div class="permessi">
+    <div sec:authorize="!hasAuthority('ARTISTA')">  <!-- da modificare -->
+        <p class="avviso" style="color: red">Attenzione, non hai i permessi per condividere una nuova opera!</p>
+    </div>
+</div>
+
+<!-- MESSAGGIO DI CONFERMA SE UNA NUOVA OPERA È STATA AGGIUNTA -->
+
+<p class="avviso" style="color: green"
+   th:if="${operaAggiunta != null}"
+   th:text="${operaAggiunta}">
+</p>
+
+<!-- FOOTER FISSO IN FONDO ALLA PAGINA -->
+
+<footer class="footer">
+    <p>Galleria degli artisti</p>
+</footer>
+
+</body>
+</html>

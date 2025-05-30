@@ -1,0 +1,200 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: #FDFDFD; /* Bianco più intenso */
+}
+
+.hero-header {
+    background-color: #FDFDFD; /* Sfondo bianco brillante */
+    padding: 40px 0;
+    text-align: center;
+}
+
+.site-title {
+    color: #FFFFFF; /* Scritta completamente bianca */
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+.principale {
+    width: 330px;
+    padding: 2rem 1rem;
+    margin: 50px auto;
+    background-color: #fff;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+}
+
+.datiOrizzontale {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding-left: 18px;
+    padding-right: 18px;
+}
+
+.datiOrizzontale input {
+    border-radius: 12px;
+}
+
+h1 {
+    font-size: 2rem;
+    color: #3E3E3E;
+    margin-bottom: 1.2rem;
+}
+
+.segmented-picker {
+    display: flex;
+    padding: 12px 20px;
+    width: 92%;
+    outline: none;
+    border: 1px solid #fff;
+    margin-bottom: 10px;
+    border-radius: 20px;
+    background: #e4e4e4;
+    margin-left: 12px;
+}
+
+.segmented-picker input[type="radio"] {
+    display: none;
+}
+
+.segmented-picker label {
+    flex: 1;
+    padding: 12px 20px;
+    text-align: center;
+    cursor: pointer;
+    background: #e4e4e4;
+    border-radius: 20px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    border: 1px solid transparent;
+}
+
+.segmented-picker label:first-child {
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+
+.segmented-picker label:last-child {
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.segmented-picker input[type="radio"]:checked + label {
+    background-color: #2C3E50; /* Colore più artistico */
+    color: #fff;
+    border: 1px solid #2C3E50;
+}
+
+form input {
+    width: 92%;
+    outline: none;
+    border: 1px solid #fff;
+    padding: 12px 20px;
+    margin-bottom: 10px;
+    border-radius: 20px;
+    background: #e4e4e4;
+}
+
+button {
+    font-size: 1rem;
+    margin-top: 1.8rem;
+    padding: 10px 0;
+    border-radius: 20px;
+    outline: none;
+    border: none;
+    width: 90%;
+    color: #fff;
+    cursor: pointer;
+    background: #34495E;
+}
+
+button:hover {
+    background: #2C3E50;
+}
+
+input:focus {
+    border: 1px solid rgb(192, 192, 192);
+}
+
+.divider {
+    border-top: 1px solid gray;
+    width: 88%;
+    margin: 8px auto 18px auto;
+}
+
+.login {
+    font-size: 0.8rem;
+    margin-top: 1.4rem;
+    color: #636363;
+}
+
+.login a {
+    color: #34495E;
+    text-decoration: none;
+}
+
+.error-message {
+    padding: 18px 0 0 0;
+    color: red;
+    font-size: 0.8rem;
+}
+
+.success-message {
+    padding: 18px 0 0 0;
+    color: green;
+    font-size: 0.8rem;
+}
+
+select {
+    width: 92%;
+    height: 42px;
+    padding: 12px 20px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    font-size: 16px;
+    color: #333;
+    background: #e4e4e4;
+    margin-bottom: 8px;
+    font-size: 0.8rem;
+}
+
+select:focus {
+    border-color: #2C3E50;
+    outline: none;
+}
+
+.date-label {
+    font-size: 0.8rem;
+    display: flex;
+    justify-content: center;
+    color: #333;
+    margin-bottom: 2px;
+}
+
+.avviso {
+    padding: 18px 0 0 0;
+    color: green;
+    font-size: 0.8rem;
+}
+
+.footer {
+    background-color: #2C3E50;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.footer p {
+    margin: 0;
+    font-size: 14px;
+}

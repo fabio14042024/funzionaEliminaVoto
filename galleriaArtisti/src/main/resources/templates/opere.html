@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Opere</title>
+  <style>
+    body {
+      background-color: white;
+      color: black;
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    a {
+      color: black;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    ul {
+      list-style-type: disc; /* Puntini */
+      padding-left: 20px;
+    }
+
+    li {
+      margin: 10px 0;
+      font-size: 1.1em;
+    }
+  </style>
+</head>
+<body>
+  <h1>Opere</h1>
+
+  <!-- Se non ci sono opere nel sistema -->
+  <div th:if="${opere.isEmpty()}">Non ci sono opere nel sistema</div>
+
+  <!-- Se ci sono opere -->
+  <ul th:if="${!opere.isEmpty()}">
+    <li th:each="opera : ${opere}">
+      <!-- Link per visualizzare i dettagli dell'opera -->
+      <a th:href="@{'/opera/' + ${opera.id}}"
+         th:text="${opera.titolo} + ' (' + ${opera.annoCreazione} + ')'">Titolo Opera (2000)</a>
+    </li>
+  </ul>
+</body>
+</html>
