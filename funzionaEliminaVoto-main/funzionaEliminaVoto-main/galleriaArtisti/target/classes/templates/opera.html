@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Opera</title>
+  <style>
+    body {
+      background-color: white;
+      color: black;
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      text-align: center;
+    }
+
+    a {
+      color: black;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    h1 {
+      margin-top: 20px;
+    }
+
+    .opera-info {
+      margin: 20px auto;
+      max-width: 800px;
+      display: flex;
+      flex-direction: column;
+      align-items: center; /* Centra gli elementi orizzontalmente */
+      justify-content: center; /* Centra gli elementi verticalmente */
+    }
+
+    .opera-info div {
+      margin-bottom: 15px; /* Aggiungi distanza tra gli elementi */
+    }
+
+    .opera-info img {
+      margin-top: 20px; /* Distanza tra la foto e gli altri campi */
+      max-width: 300px;
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <a href="/">Home</a>
+  </div>
+
+  <div th:if="${opera}" class="opera-info">
+    <h1 th:text="${opera.titolo}">Titolo Opera</h1>
+    <div>Anno di creazione: <span th:text="${opera.annoCreazione}">2000</span></div>
+    <div>Descrizione: <span th:text="${opera.descrizione}">Opera del 1900</span></div>
+    <div>Corrente Artistica: <span th:text="${opera.correnteArtistica}">Surrealismo</span></div>
+    <div><img th:src="${opera.urlImage}" alt="Immagine opera" th:if="${opera.urlImage != null}"></div>
+  </div>
+
+  <div th:unless="${opera}">
+    <p>Opera non esiste.</p>
+  </div>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Votazione Opera</title>
+    <link rel="stylesheet" th:href="@{css/votaOpera.css}">
+    <link href="/static/css/votaOpera.css" rel="stylesheet">
+</head>
+<body>
+<header>
+    <a class="indietro" th:href="@{/}">
+        <img alt="index" th:src="@{/images/back-arrow.png}">
+    </a>
+    <div class="container">
+        <h1>Vota Opera</h1>
+    </div>
+</header>
+<main>
+    <div class="principale">
+        <h1 th:text="${opera.titolo}"></h1>
+        <p class="descrizione" th:text="${opera.descrizione}"></p>
+        <form class="form-voto" th:action="@{/inviaVoto}" th:method="POST">
+            <label>
+                <input th:type="number" th:name="voto" min="1" max="10" th:placeholder="10" required>
+            </label>
+            <input th:type="hidden" name="operaId" th:value="${opera.id}">
+            <input th:type="hidden" name="username" th:value="${username}">
+            <button class="form-button" type="submit">Invia Voto</button>
+        </form>
+    </div>
+</main>
+</body>
+</html>
